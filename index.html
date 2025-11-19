@@ -19,18 +19,23 @@
             margin-bottom: 20px;
         }
 
-        .container {
+        .item {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            gap: 30px;
+            background: #1d1d1d;
+            padding: 20px;
+            margin: 25px auto;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 12px;
+            border: 1px solid #333;
         }
 
         .preview-image {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border-radius: 10px;
             object-fit: cover;
             border: 2px solid #333;
@@ -38,10 +43,10 @@
 
         .download-btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 25px;
             background: #0078ff;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             border-radius: 10px;
             transition: 0.2s;
@@ -55,19 +60,31 @@
 <body>
 
     <h1>CraftDownloader</h1>
-    <p>Select a picture below and download the file!</p>
+    <p>Choose a file to download below:</p>
 
-    <div class="container">
-        <!-- 🔳 PICTURE OPTION 1 -->
-        <img class="preview-image" src="your-image-1.png" alt="Preview 1">
 
-        <!-- 🔽 DOWNLOAD BUTTON -->
-        <a class="download-btn" href="Capture the Flag.mcworld" download>Download Now</a>
-
-        <!-- 🔳 PICTURE OPTION 2 -->
-        <img class="preview-image" src="your-image-2.png" alt="Preview 2">
+    <!-- ITEM 1 -->
+    <div class="item">
+        <img class="preview-image" src="image1.png" alt="Preview 1">
+        <a class="download-btn" href="file1.zip" download>Download File 1</a>
     </div>
 
+
+    <!-- ITEM 2 -->
+    <div class="item">
+        <img class="preview-image" src="image2.png" alt="Preview 2">
+        <a class="download-btn" href="file2.zip" download>Download File 2</a>
+    </div>
+
+
+    <!-- ITEM 3 -->
+    <div class="item">
+        <img class="preview-image" src="image3.png" alt="Preview 3">
+        <a class="download-btn" href="file3.zip" download>Download File 3</a>
+    </div>
+
+
+    <!-- Add more items by copying/pasting the whole <div class="item"> section -->
+    
 </body>
 </html>
-
