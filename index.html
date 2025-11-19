@@ -3,24 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Website</title>
+    <title>CraftDownloader</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #1a1a1a;
+            background: #121212;
             color: white;
             text-align: center;
-            padding: 50px;
+            padding: 40px;
         }
+
         h1 {
             font-size: 40px;
             margin-bottom: 20px;
         }
-        p {
-            font-size: 18px;
-            margin-bottom: 40px;
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
+
+        .preview-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+
         .download-btn {
             display: inline-block;
             padding: 15px 30px;
@@ -28,9 +43,10 @@
             color: white;
             font-size: 20px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: 0.2s;
         }
+
         .download-btn:hover {
             background: #005fcc;
         }
@@ -38,11 +54,20 @@
 </head>
 <body>
 
-    <h1>Welcome to My Website</h1>
-    <p>Click below to download the file!</p>
+    <h1>CraftDownloader</h1>
+    <p>Select a picture below and download the file!</p>
 
-    <!-- 🔽 DOWNLOAD BUTTON -->
-    <a class="download-btn" href="Capture the Flag.mcworld" download>Download Now</a>
+    <div class="container">
+        <!-- 🔳 PICTURE OPTION 1 -->
+        <img class="preview-image" src="your-image-1.png" alt="Preview 1">
+
+        <!-- 🔽 DOWNLOAD BUTTON -->
+        <a class="download-btn" href="Capture the Flag.mcworld" download>Download Now</a>
+
+        <!-- 🔳 PICTURE OPTION 2 -->
+        <img class="preview-image" src="your-image-2.png" alt="Preview 2">
+    </div>
 
 </body>
 </html>
+
