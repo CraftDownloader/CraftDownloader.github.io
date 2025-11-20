@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CraftDownloader</title>
 
     <style>
@@ -19,72 +19,98 @@
             margin-bottom: 20px;
         }
 
+        p.subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #cccccc;
+        }
+
         .item {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 30px;
             background: #1d1d1d;
-            padding: 20px;
-            margin: 40px auto;
+            padding: 25px;
+            margin: 30px auto;
             width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            border: 3px solid #333;
+            max-width: 750px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 0 8px #000;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 250px;
+        }
+
+        .download-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e0e0e0;
         }
 
         .preview-image {
             width: 200px;
             height: 200px;
-            border-radius: 10px;
+            border-radius: 12px;
             object-fit: cover;
             border: 2px solid #333;
         }
 
+        /* 🔥 Animated Download Button */
         .download-btn {
             display: inline-block;
-            padding: 15px 25px;
+            padding: 15px 30px;
             background: #0078ff;
             color: white;
             font-size: 18px;
             text-decoration: none;
             border-radius: 10px;
-            transition: 0.2s;
+            transition: 0.25s ease;
+            box-shadow: 0 0 8px #005fcc;
         }
 
         .download-btn:hover {
-            background: #005fcc;
+            transform: scale(1.08);
+            background: #0a8dff;
+            box-shadow: 0 0 15px #0a8dff;
         }
     </style>
 </head>
 <body>
 
     <h1>CraftDownloader</h1>
-    <p>Choose a file to download below:</p>
+    <p class="subtitle">Choose a file below and click download.</p>
 
-
+    
     <!-- ITEM 1 -->
     <div class="item">
         <img class="preview-image" src="ctf_pic.jpg" alt="Preview 1">
-        <a class="download-btn" href="Capture the Flag.mcworld" download>Download </a>
+
+        <div class="info">
+            <div class="download-title">Capture the Flag</div>
+            <a class="download-btn" href="Capture the Flag.mcworld" download>Download</a>
+        </div>
     </div>
 
 
     <!-- ITEM 2 -->
     <div class="item">
         <img class="preview-image" src="image2.png" alt="Preview 2">
-        <a class="download-btn" href="file2.zip" download>Download </a>
+
+        <div class="info">
+            <div class="download-title">Custom Texture Pack</div>
+            <a class="download-btn" href="file2.zip" download>Download</a>
+        </div>
     </div>
 
 
-    <!-- ITEM 3 -->
-    <div class="item">
-        <img class="preview-image" src="image3.png" alt="Preview 3">
-        <a class="download-btn" href="file3.zip" download>Download </a>
-    </div>
-
-
-    <!-- Add more items by copying/pasting the whole <div class="item"> section -->
     
+
 </body>
 </html>
