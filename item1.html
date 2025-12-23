@@ -1,113 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
-     crossorigin="anonymous"></script>
-    
+    <!-- Google AdSense -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
+        crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item 1 - CraftDownloader</title>
+    <title>Capture the Flag – CraftDownloader</title>
 
     <style>
+        /* =========================
+           THEME VARIABLES
+           (MATCHES HOMEPAGE)
+        ========================== */
+
+        :root {
+            --bg: #0f1115;
+            --surface: #1a1d23;
+            --border: #2a2f3a;
+            --text: #ffffff;
+            --muted: #9aa0aa;
+            --accent: #4da3ff;
+            --accent-hover: #6bb4ff;
+            --shadow: rgba(0,0,0,0.45);
+        }
+
+        body[data-theme="light"] {
+            --bg: #f4f6f9;
+            --surface: #ffffff;
+            --border: #dcdfe5;
+            --text: #121212;
+            --muted: #555;
+            --accent: #0066ff;
+            --accent-hover: #1a75ff;
+            --shadow: rgba(0,0,0,0.15);
+        }
+
+        /* =========================
+           BASE
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #121212;
-            color: white;
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            padding: 40px 20px 24px;
             text-align: center;
-            padding: 40px;
         }
 
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: #1d1d1d;
-            padding: 30px;
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* =========================
+           MAIN LAYOUT
+        ========================== */
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 20px 64px;
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 14px 40px var(--shadow);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 360px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 24px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        h2 {
+            margin-top: 28px;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* =========================
+           ACTIONS
+        ========================== */
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .button {
+            padding: 14px 22px;
             border-radius: 12px;
-            border: 1px solid #333;
-        }
-
-        .item-img {
-            width: 70%;
-            border-radius: 10px;
-            border: 2px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .download-btn {
+            font-weight: 700;
+            text-align: center;
+            transition: 0.2s ease;
             display: inline-block;
-            padding: 15px 25px;
-            background: #0078ff;
+        }
+
+        .button.primary {
+            background: var(--accent);
             color: white;
-            font-size: 20px;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: 0.2s;
         }
 
-        .download-btn:hover {
-            background: #005fcc;
+        .button.primary:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
         }
 
-        .back-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background: #555;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+        .button.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
         }
 
-        .back-btn:hover {
-            background: #444;
+        .button.secondary:hover {
+            border-color: var(--accent);
+        }
+
+        /* =========================
+           ADS
+        ========================== */
+
+        .ad {
+            margin: 28px 0;
+            text-align: center;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 40px;
         }
     </style>
 </head>
-<body>
 
-    <div class="container">
-        <h1>Capture the Flag</h1>
+<body data-theme="dark">
 
-        <img class="item-img" src="ctf_pic.jpg" alt="Item 1">
+<header>
+    <h1>Capture the Flag</h1>
+    <p>Minecraft Minigame</p>
+</header>
 
-            <!-- Responsive Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block; text-align:center; margin:20px auto;"
-     data-ad-client="ca-pub-1662092058732241"
-     data-ad-slot="3881039877"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+<main>
+    <div class="panel">
 
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+        <img class="hero-image" src="ctf_pic.jpg" alt="Capture the Flag">
 
+        <div class="ad">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-1662092058732241"
+                data-ad-slot="3881039877"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+        </div>
+
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
         <h2>Description</h2>
-        <p>In this game, you battle each other and try and take the opponents flag back to your base, but the opponents will try and stop you. The winner is whoever has the most points after the time runs out.</p>
+        <p>
+            In this game, you battle opposing teams and attempt to steal the enemy flag
+            and return it to your base. Defend your own flag while stopping the opposing
+            team. The winner is the team with the highest score when time runs out.
+        </p>
 
         <h2>Credits</h2>
-        <p>Programmer - Planetnoob<br>Map By - Planetnoob, Wolfbane18, AstrangeDogsLife, JohnBob </p>
+        <p>
+            Programmer – Planetnoob<br>
+            Map – Planetnoob, Wolfbane18, AstrangeDogsLife, JohnBob
+        </p>
 
-        <a class="download-btn" href="Capture the Flag.mcworld" download>Download</a>
+        <div class="actions">
+            <a class="button primary" href="Capture the Flag.mcworld" download>
+                Download
+            </a>
+            <a class="button secondary" href="index.html">
+                ← Back to Home
+            </a>
+        </div>
 
-        <br>
-        <a class="back-btn" href="index.html">← Back to Home</a>
+        <div class="ad">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-1662092058732241"
+                data-ad-slot="3881039877"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+        </div>
 
-            <!-- Responsive Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block; text-align:center; margin:20px auto;"
-     data-ad-client="ca-pub-1662092058732241"
-     data-ad-slot="3881039877"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
     </div>
+
+    <footer>
+        © CraftDownloader
+    </footer>
+</main>
+
+<script>
+    function applySavedTheme() {
+        const savedTheme = localStorage.getItem("cd-theme");
+        if (savedTheme) {
+            document.body.setAttribute("data-theme", savedTheme);
+        }
+    }
+    applySavedTheme();
+</script>
 
 </body>
 </html>
