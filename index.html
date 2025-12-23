@@ -44,7 +44,7 @@
         }
 
         main {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
         }
 
@@ -116,6 +116,41 @@
             text-decoration: none;
             border-radius: 10px;
             font-size: 16px;
+        }
+
+        /* =====================
+           HOW TO INSTALL
+        ====================== */
+        .install {
+            margin-top: 60px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .install h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .install ol {
+            margin-left: 20px;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .install li {
+            margin-bottom: 14px;
+        }
+
+        .install-note {
+            margin-top: 20px;
+            padding: 16px;
+            border-left: 4px solid var(--accent);
+            background: rgba(0, 120, 255, 0.08);
+            color: var(--muted);
+            border-radius: 6px;
         }
 
         /* =====================
@@ -213,7 +248,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
-    <!-- GRID -->
+    <!-- GAME GRID -->
     <section class="grid">
         <div class="card">
             <img src="ctf_pic.jpg" alt="Capture the Flag">
@@ -258,7 +293,28 @@
         </div>
     </section>
 
-    <footer>CraftDownloader</footer>
+    <!-- HOW TO INSTALL -->
+    <section class="install">
+        <h2>How to Install Minecraft Bedrock Minigames</h2>
+        <p class="subtitle">
+            Follow these steps to install and play any minigame downloaded from CraftDownloader.
+        </p>
+
+        <ol>
+            <li>Download the <strong>.mcworld</strong> file from the minigame page.</li>
+            <li>Open the downloaded file on your device.</li>
+            <li>Minecraft Bedrock Edition will launch automatically and import the world.</li>
+            <li>Go to <strong>Play → Worlds</strong> and locate the imported map.</li>
+            <li>Start the world and follow any in-game instructions.</li>
+        </ol>
+
+        <div class="install-note">
+            <strong>Note:</strong> These maps are designed for Minecraft Bedrock Edition.
+            Make sure your Minecraft version is up to date.
+        </div>
+    </section>
+
+    <footer>© CraftDownloader</footer>
 </main>
 
 <script>
