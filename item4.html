@@ -5,255 +5,67 @@
     <script async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
         crossorigin="anonymous"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manhunt – CraftDownloader</title>
-
     <style>
-        /* =========================
-           THEME VARIABLES
-           (MATCHES HOMEPAGE)
-        ========================== */
-
-        :root {
-            --bg: #0f1115;
-            --surface: #1a1d23;
-            --border: #2a2f3a;
-            --text: #ffffff;
-            --muted: #9aa0aa;
-            --accent: #4da3ff;
-            --accent-hover: #6bb4ff;
-            --shadow: rgba(0,0,0,0.45);
-        }
-
-        body[data-theme="light"] {
-            --bg: #f4f6f9;
-            --surface: #ffffff;
-            --border: #dcdfe5;
-            --text: #121212;
-            --muted: #555;
-            --accent: #0066ff;
-            --accent-hover: #1a75ff;
-            --shadow: rgba(0,0,0,0.15);
-        }
-
-        /* =========================
-           BASE
-        ========================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           HEADER
-        ========================== */
-
-        header {
-            padding: 40px 20px 24px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 38px;
-        }
-
-        header p {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 16px;
-        }
-
-        /* =========================
-           MAIN LAYOUT
-        ========================== */
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 24px 20px 64px;
-        }
-
-        .panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 14px 40px var(--shadow);
-        }
-
-        .hero-image {
-            width: 100%;
-            max-height: 360px;
-            object-fit: cover;
-            border-radius: 14px;
-            margin-bottom: 24px;
-        }
-
-        /* =========================
-           CONTENT
-        ========================== */
-
-        h2 {
-            margin-top: 28px;
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        p {
-            color: var(--muted);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        /* =========================
-           ACTIONS
-        ========================== */
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        .button {
-            padding: 14px 22px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-align: center;
-            transition: 0.2s ease;
-            display: inline-block;
-        }
-
-        .button.primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .button.primary:hover {
-            background: var(--accent-hover);
-            transform: scale(1.05);
-        }
-
-        .button.secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-
-        .button.secondary:hover {
-            border-color: var(--accent);
-        }
-
-        /* =========================
-           ADS
-        ========================== */
-
-        .ad {
-            margin: 28px 0;
-            text-align: center;
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 14px;
-            margin-top: 40px;
-        }
+        /* Same styles as previous pages */
+        :root { --bg:#0f1115; --surface:#1a1d23; --border:#2a2f3a; --text:#ffffff; --muted:#9aa0aa; --accent:#4da3ff; --accent-hover:#6bb4ff; --shadow:rgba(0,0,0,0.45);}
+        body[data-theme="light"]{--bg:#f4f6f9;--surface:#ffffff;--border:#dcdfe5;--text:#121212;--muted:#555;--accent:#0066ff;--accent-hover:#1a75ff;--shadow:rgba(0,0,0,0.15);}
+        *{box-sizing:border-box;} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);} a{color:inherit;text-decoration:none;}
+        header{padding:40px 20px 24px;text-align:center;} header h1{margin:0;font-size:38px;} header p{margin-top:10px;color:var(--muted);font-size:16px;}
+        main{max-width:900px;margin:0 auto;padding:24px 20px 64px;} .panel{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 14px 40px var(--shadow);}
+        .hero-image{width:100%;max-height:360px;object-fit:cover;border-radius:14px;margin-bottom:24px;}
+        h2{margin-top:28px;margin-bottom:12px;font-size:22px;} p{color:var(--muted);line-height:1.6;font-size:16px;}
+        .actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px;} .button{padding:14px 22px;border-radius:12px;font-weight:700;text-align:center;transition:0.2s ease;display:inline-block;}
+        .button.primary{background:var(--accent);color:white;} .button.primary:hover{background:var(--accent-hover);transform:scale(1.05);}
+        .button.secondary{background:transparent;border:1px solid var(--border);color:var(--text);} .button.secondary:hover{border-color:var(--accent);}
+        .ad{margin:28px 0;text-align:center;} .gallery{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;justify-content:center;} .gallery img{width:180px;height:120px;object-fit:cover;border-radius:10px;border:1px solid var(--border);}
+        .tips{margin-top:20px;background: var(--bg);border-left:4px solid var(--accent);padding:16px;border-radius:8px;} .tips h3{margin-top:0;}
     </style>
 </head>
-
 <body data-theme="dark">
 
-<header>
-    <h1>Manhunt</h1>
-    <p>Minecraft Minigame</p>
-</header>
-
+<header><h1>Manhunt</h1><p>Minecraft Minigame</p></header>
 <main>
     <div class="panel">
-
         <img class="hero-image" src="Manhunt.png" alt="Manhunt">
 
-        <div class="ad">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-1662092058732241"
-                data-ad-slot="3881039877"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-        </div>
-
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1662092058732241" data-ad-slot="3881039877" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
         <h2>Description</h2>
-        <p>
-            In this game, players must complete an objective while being relentlessly
-            hunted by other players. Speed, strategy, and awareness are crucial to
-            survive and succeed.
-        </p>
+        <p>In Manhunt, players attempt to complete an objective while being hunted. Speed, strategy, and awareness are critical to survive and win.</p>
+
+        <h2>Gameplay Guide</h2>
+        <div class="tips">
+            <h3>Tips & Strategies</h3>
+            <ul>
+                <li>Plan your route carefully to avoid hunters.</li>
+                <li>Keep track of other players’ positions.</li>
+                <li>Use the environment for cover and escapes.</li>
+                <li>Coordinate if playing in teams to increase survival chances.</li>
+            </ul>
+        </div>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="Manhunt1.png" alt="Manhunt Screenshot 1">
+            <img src="Manhunt2.png" alt="Manhunt Screenshot 2">
+        </div>
 
         <h2>Credits</h2>
-        <p>
-            Programmer & Designer – Planetnoob
-        </p>
+        <p>Programmer & Designer – Planetnoob</p>
 
         <div class="actions">
-            <a class="button primary" href="Manhunt.mcworld" download>
-                Download
-            </a>
-            <a class="button secondary" href="index.html">
-                ← Back to Home
-            </a>
+            <a class="button primary" href="Manhunt.mcworld" download>Download</a>
+            <a class="button secondary" href="index.html">← Back to Home</a>
         </div>
-
-        <div class="ad">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-1662092058732241"
-                data-ad-slot="3881039877"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-        </div>
-
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
+        <div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1662092058732241" data-ad-slot="3881039877" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <footer>
-        © CraftDownloader
-    </footer>
+    <footer>© CraftDownloader</footer>
 </main>
-
-<script>
-    const savedTheme = localStorage.getItem("cd-theme");
-    if (savedTheme) {
-        document.body.setAttribute("data-theme", savedTheme);
-    }
-</script>
-
+<script>const savedTheme = localStorage.getItem("cd-theme"); if(savedTheme) document.body.setAttribute("data-theme", savedTheme);</script>
 </body>
 </html>
