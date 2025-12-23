@@ -2,51 +2,44 @@
 <html lang="en">
 <head>
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
-     crossorigin="anonymous"></script>
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
+        crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CraftDownloader</title>
 
     <style>
-        /* =====================
+        /* =========================
            THEME VARIABLES
-        ====================== */
+        ========================== */
 
         :root {
-            --bg: #121212;
-            --panel: #1e1e1e;
+            --bg: #0f1115;
+            --surface: #1a1d23;
+            --border: #2a2f3a;
             --text: #ffffff;
-            --muted: #b0b0b0;
-            --border: #2a2a2a;
+            --muted: #9aa0aa;
             --accent: #4da3ff;
-            --accent-glow: rgba(77,163,255,0.5);
+            --accent-hover: #6bb4ff;
+            --shadow: rgba(0,0,0,0.45);
         }
 
-        [data-theme="light"] {
-            --bg: #f4f6f8;
-            --panel: #ffffff;
-            --text: #1a1a1a;
+        body[data-theme="light"] {
+            --bg: #f4f6f9;
+            --surface: #ffffff;
+            --border: #dcdfe5;
+            --text: #121212;
             --muted: #555;
-            --border: #ddd;
             --accent: #0066ff;
-            --accent-glow: rgba(0,102,255,0.3);
+            --accent-hover: #1a75ff;
+            --shadow: rgba(0,0,0,0.15);
         }
 
-   [data-theme="contrast"] {
-    --bg: #000000;
-    --panel: #000000;
-    --text: #ffffff;
-    --muted: #ffff00;
-    --border: #ffffff;
-    --accent: #00ffff;
-    --accent-glow: rgba(0,255,255,0.6);
-}
-
-        /* =====================
-           BASE STYLES
-        ====================== */
+        /* =========================
+           BASE RESET
+        ========================== */
 
         * {
             box-sizing: border-box;
@@ -59,68 +52,93 @@
             color: var(--text);
         }
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
         header {
-            padding: 40px 20px 20px;
+            padding: 48px 20px 24px;
             text-align: center;
         }
 
-        h1 {
-            font-size: 42px;
+        header h1 {
             margin: 0;
+            font-size: 44px;
+            letter-spacing: -0.5px;
         }
 
-        .subtitle {
-            color: var(--muted);
-            margin-top: 10px;
+        header p {
+            margin-top: 12px;
             font-size: 18px;
+            color: var(--muted);
         }
 
-        /* =====================
-           THEME SELECTOR
-        ====================== */
+        /* =========================
+           THEME TOGGLE
+        ========================== */
 
-        .theme-bar {
+        .theme-toggle {
+            margin-top: 24px;
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 20px;
         }
 
-        .theme-btn {
-            background: var(--panel);
+        .theme-toggle button {
+            background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 10px;
             cursor: pointer;
+            font-weight: 600;
             transition: 0.2s ease;
         }
 
-        .theme-btn:hover {
+        .theme-toggle button:hover {
             border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* =====================
-           GRID LAYOUT
-        ====================== */
+        /* =========================
+           AD CONTAINER
+        ========================== */
+
+        .ad {
+            max-width: 1000px;
+            margin: 24px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================== */
 
         main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px 60px;
+            padding: 24px 20px 64px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
         }
 
+        /* =========================
+           CARD
+        ========================== */
+
         .card {
-            background: var(--panel);
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -129,7 +147,7 @@
 
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 16px 40px var(--shadow);
         }
 
         .card img {
@@ -138,45 +156,49 @@
             object-fit: cover;
         }
 
-        .card-body {
+        .card-content {
             padding: 18px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 14px;
+            flex-grow: 1;
         }
 
         .card-title {
             font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 14px;
+            font-weight: 700;
         }
 
-        .view-btn {
+        .card-actions {
+            margin-top: auto;
+        }
+
+        .button {
+            display: block;
             text-align: center;
             padding: 12px;
+            border-radius: 12px;
             background: var(--accent);
             color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
+            font-weight: 700;
             transition: 0.2s ease;
         }
 
-        .view-btn:hover {
-            box-shadow: 0 0 16px var(--accent-glow);
-            transform: scale(1.05);
+        .button:hover {
+            background: var(--accent-hover);
+            transform: scale(1.04);
         }
 
-        /* =====================
-           ADS
-        ====================== */
+        /* =========================
+           FOOTER
+        ========================== */
 
-        .ad-container {
-            margin: 30px auto;
+        footer {
             text-align: center;
+            padding: 32px 20px;
+            color: var(--muted);
+            font-size: 14px;
         }
-
     </style>
 </head>
 
@@ -184,16 +206,15 @@
 
 <header>
     <h1>CraftDownloader</h1>
-    <p class="subtitle">Download ready-to-play Minecraft minigames</p>
+    <p>Download ready-to-play Minecraft minigames</p>
 
-    <div class="theme-bar">
-        <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
-        <button class="theme-btn" onclick="setTheme('light')">Light</button>
-        <button class="theme-btn" onclick="setTheme('amoled')">AMOLED</button>
+    <div class="theme-toggle">
+        <button onclick="setTheme('dark')">Dark</button>
+        <button onclick="setTheme('light')">Light</button>
     </div>
 </header>
 
-<div class="ad-container">
+<div class="ad">
     <ins class="adsbygoogle"
         style="display:block"
         data-ad-client="ca-pub-1662092058732241"
@@ -211,46 +232,60 @@
 
         <div class="card">
             <img src="ctf_pic.jpg" alt="Capture the Flag">
-            <div class="card-body">
+            <div class="card-content">
                 <div class="card-title">Capture the Flag</div>
-                <a class="view-btn" href="item1.html">View</a>
+                <div class="card-actions">
+                    <a class="button" href="item1.html">View</a>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <img src="KitPvP.png" alt="Kit PvP">
-            <div class="card-body">
+            <div class="card-content">
                 <div class="card-title">Kit PvP</div>
-                <a class="view-btn" href="item2.html">View</a>
+                <div class="card-actions">
+                    <a class="button" href="item2.html">View</a>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <img src="Spleef.png" alt="Spleef">
-            <div class="card-body">
+            <div class="card-content">
                 <div class="card-title">Spleef</div>
-                <a class="view-btn" href="item3.html">View</a>
+                <div class="card-actions">
+                    <a class="button" href="item3.html">View</a>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <img src="Manhunt.png" alt="Manhunt">
-            <div class="card-body">
+            <div class="card-content">
                 <div class="card-title">Manhunt</div>
-                <a class="view-btn" href="item4.html">View</a>
+                <div class="card-actions">
+                    <a class="button" href="item4.html">View</a>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <img src="kinghill.png" alt="King of the Hill">
-            <div class="card-body">
+            <div class="card-content">
                 <div class="card-title">King of the Hill</div>
-                <a class="view-btn" href="item5.html">View</a>
+                <div class="card-actions">
+                    <a class="button" href="item5.html">View</a>
+                </div>
             </div>
         </div>
 
     </div>
 </main>
+
+<footer>
+    © CraftDownloader
+</footer>
 
 <script>
     function setTheme(theme) {
@@ -258,9 +293,9 @@
         localStorage.setItem("cd-theme", theme);
     }
 
-    const savedTheme = localStorage.getItem("cd-theme");
-    if (savedTheme) {
-        setTheme(savedTheme);
+    const saved = localStorage.getItem("cd-theme");
+    if (saved) {
+        setTheme(saved);
     }
 </script>
 
