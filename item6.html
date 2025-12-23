@@ -1,71 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- Google AdSense -->
     <script async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
         crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King of the Hill – CraftDownloader</title>
+    <title>Prop Hunt - CraftDownloader</title>
+
     <style>
-        /* Same styles as previous pages */
-        :root { --bg:#0f1115; --surface:#1a1d23; --border:#2a2f3a; --text:#ffffff; --muted:#9aa0aa; --accent:#4da3ff; --accent-hover:#6bb4ff; --shadow:rgba(0,0,0,0.45);}
-        body[data-theme="light"]{--bg:#f4f6f9;--surface:#ffffff;--border:#dcdfe5;--text:#121212;--muted:#555;--accent:#0066ff;--accent-hover:#1a75ff;--shadow:rgba(0,0,0,0.15);}
-        *{box-sizing:border-box;} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);} a{color:inherit;text-decoration:none;}
-        header{padding:40px 20px 24px;text-align:center;} header h1{margin:0;font-size:38px;} header p{margin-top:10px;color:var(--muted);font-size:16px;}
-        main{max-width:900px;margin:0 auto;padding:24px 20px 64px;} .panel{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 14px 40px var(--shadow);}
-        .hero-image{width:100%;max-height:360px;object-fit:cover;border-radius:14px;margin-bottom:24px;}
-        h2{margin-top:28px;margin-bottom:12px;font-size:22px;} p{color:var(--muted);line-height:1.6;font-size:16px;}
-        .actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px;} .button{padding:14px 22px;border-radius:12px;font-weight:700;text-align:center;transition:0.2s ease;display:inline-block;}
-        .button.primary{background:var(--accent);color:white;} .button.primary:hover{background:var(--accent-hover);transform:scale(1.05);}
-        .button.secondary{background:transparent;border:1px solid var(--border);color:var(--text);} .button.secondary:hover{border-color:var(--accent);}
-        .ad{margin:28px 0;text-align:center;} .gallery{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;justify-content:center;} .gallery img{width:180px;height:120px;object-fit:cover;border-radius:10px;border:1px solid var(--border);}
-        .tips{margin-top:20px;background: var(--bg);border-left:4px solid var(--accent);padding:16px;border-radius:8px;} .tips h3{margin-top:0;}
+        :root {
+            --bg: #121212;
+            --surface: #1e1e1e;
+            --border: #333;
+            --text: #ffffff;
+            --muted: #cccccc;
+            --accent: #0078ff;
+            --accent-hover: #005fcc;
+        }
+
+        body[data-theme="light"] {
+            --bg: #f4f6f9;
+            --surface: #ffffff;
+            --border: #dcdcdc;
+            --text: #121212;
+            --muted: #555555;
+            --accent: #0066ff;
+            --accent-hover: #004fd6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-hover);
+        }
+
+        .item-img {
+            width: 70%;
+            max-width: 400px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 25px;
+            background: var(--accent);
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #666;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        .ad {
+            margin: 24px 0;
+        }
     </style>
 </head>
 <body data-theme="dark">
 
-<header><h1>King of the Hill</h1><p>Minecraft Minigame</p></header>
-<main>
-    <div class="panel">
-        <img class="hero-image" src="kinghill.png" alt="King of the Hill">
+<button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
 
-        <div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1662092058732241" data-ad-slot="3881039877" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<div class="container">
+    <h1>Prop Hunt</h1>
 
-        <h2>Description</h2>
-        <p>King of the Hill is a multiplayer Minecraft minigame where players compete to stay on a designated "hill" the longest while others attempt to kill them, and claim it for themself. The last player standing wins.</p>
-
-        <h2>Gameplay Guide</h2>
-        <div class="tips">
-            <h3>Tips & Strategies</h3>
-            <ul>
-                <li>Focus on positioning and timing to control the hill.</li>
-                <li>Watch other players closely to anticipate attacks.</li>
-                <li>Use defensive maneuvers to block opponents from attacking</li>
-            </ul>
-        </div>
-
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="kinghill1.png" alt="King of the Hill Screenshot 1">
-            <img src="kinghill2.png" alt="King of the Hill Screenshot 2">
-        </div>
-
-        <h2>Credits</h2>
-        <p>Programmer – Planetnoob<br>Designer – Planetnoob, AstrangeDogsLife, Wolfbane18, Johnbob, Bails</p>
-
-        <div class="actions">
-            <a class="button primary" href="King of the Hill.mcworld" download>Download</a>
-            <a class="button secondary" href="index.html">← Back to Home</a>
-        </div>
-
-        <div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1662092058732241" data-ad-slot="3881039877" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- Ad -->
+    <div class="ad">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1662092058732241"
+            data-ad-slot="3881039877"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
     </div>
-    <footer>© CraftDownloader</footer>
-</main>
-<script>const savedTheme = localStorage.getItem("cd-theme"); if(savedTheme) document.body.setAttribute("data-theme", savedTheme);</script>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <img class="item-img" src="prophunt.png" alt="Prop Hunt">
+
+    <h2>Description</h2>
+    <p>
+        Prop Hunt is a hide-and-seek style minigame where players disguise themselves as blocks 
+        while hunters search the map to find them before time runs out.
+    </p>
+
+    <h2>How to Play</h2>
+    <p>
+        Hiders transform into blocks and blend into the environment.
+        Hunters must identify suspicious objects and eliminate all props
+        before the timer expires.
+    </p>
+
+    <h2>Credits</h2>
+    <p>
+        Programmer – Planetnoob<br>
+        Designer – Planetnoob and Planetnoobsbro
+    </p>
+
+    <a class="download-btn" href="PropHunt.mcworld" download>Download</a>
+
+    <br>
+    <a class="back-btn" href="index.html">← Back to Home</a>
+
+    <!-- Ad -->
+    <div class="ad">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1662092058732241"
+            data-ad-slot="3881039877"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+</div>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const current = body.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        body.setAttribute("data-theme", next);
+        localStorage.setItem("cd-theme", next);
+    }
+
+    const savedTheme = localStorage.getItem("cd-theme");
+    if (savedTheme) {
+        document.body.setAttribute("data-theme", savedTheme);
+    }
+</script>
+
 </body>
 </html>
