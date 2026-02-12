@@ -1,238 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prop Hunt Hub</title>
+    <!-- Google AdSense -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
+        crossorigin="anonymous"></script>
 
-<style>
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --card: #f3f3f3;
-  --accent: #4CAF50;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftDownloader</title>
 
-body.dark {
-  --bg: #121212;
-  --text: #ffffff;
-  --card: #1f1f1f;
-  --accent: #66ff88;
-}
+    <style>
+        /* =====================
+           THEME VARIABLES
+        ====================== */
+        :root {
+            --bg: #121212;
+            --panel: #1d1d1d;
+            --text: #ffffff;
+            --muted: #bbbbbb;
+            --border: #333;
+            --accent: #0078ff;
+        }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.3s ease;
-}
+        [data-theme="light"] {
+            --bg: #f4f6f8;
+            --panel: #ffffff;
+            --text: #111111;
+            --muted: #555555;
+            --border: #dddddd;
+            --accent: #0078ff;
+        }
 
-/* TOP NAVIGATION BAR */
-.navbar {
-  background: var(--card);
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+        /* =====================
+           BASE
+        ====================== */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--text);
-  margin-right: 20px;
-  font-weight: bold;
-}
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 16px;
+        }
 
-.nav-links a:hover {
-  color: var(--accent);
-}
+        /* =====================
+           TOP BAR
+        ====================== */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+        }
 
-/* TOGGLE SWITCH */
-.toggle {
-  position: relative;
-  width: 50px;
-  height: 25px;
-}
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-.toggle input {
-  display: none;
-}
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  background: #ccc;
-  border-radius: 25px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-}
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
 
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 19px;
-  width: 19px;
-  left: 3px;
-  bottom: 3px;
-  background: white;
-  border-radius: 50%;
-  transition: 0.4s;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
 
-input:checked + .slider {
-  background: var(--accent);
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-input:checked + .slider:before {
-  transform: translateX(25px);
-}
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text);
+        }
 
-/* HERO SECTION */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-}
+        /* =====================
+           THEME TOGGLE (NOW INSIDE BAR)
+        ====================== */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
+        .switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+        }
 
-.hero p {
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-/* MINI GAME SECTION */
-.games {
-  padding: 50px 20px;
-  text-align: center;
-}
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #888;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
 
-.game-card {
-  background: var(--card);
-  padding: 50px 20px;
-  border-radius: 15px;
-  font-size: 1.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+        .switch input:checked + .slider {
+            background: var(--accent);
+        }
 
-.game-card:hover {
-  transform: translateY(-8px);
-  background: var(--accent);
-  color: #000;
-}
+        .switch input:checked + .slider::before {
+            transform: translateX(22px);
+        }
 
-/* HOW TO INSTALL */
-.install {
-  padding: 50px 20px;
-  text-align: center;
-}
+        /* =====================
+           MOBILE NAV
+        ====================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: var(--panel);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 15px;
+                display: none;
+                width: 200px;
+            }
 
-.install-box {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 700px;
-  margin: auto;
-  text-align: left;
-  line-height: 1.6;
-}
+            .nav-links.active {
+                display: flex;
+            }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  background: var(--card);
-}
+            .menu-toggle {
+                display: block;
+            }
+        }
 
-footer a {
-  text-decoration: none;
-  color: var(--text);
-}
+        /* =====================
+           HEADER
+        ====================== */
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-footer a:hover {
-  color: var(--accent);
-}
-</style>
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+        }
+
+        /* =====================
+           GRID
+        ====================== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 14px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            flex-grow: 1;
+            font-size: 14px;
+        }
+
+        .view-btn {
+            margin-top: 16px;
+            padding: 12px;
+            text-align: center;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        /* =====================
+           INSTALL SECTION
+        ====================== */
+        .install {
+            margin-top: 60px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .install h2 {
+            margin-top: 0;
+        }
+
+        .install ol {
+            margin-left: 20px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .install-note {
+            margin-top: 20px;
+            padding: 16px;
+            border-left: 4px solid var(--accent);
+            background: rgba(0, 120, 255, 0.08);
+            border-radius: 6px;
+            color: var(--muted);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+    </style>
 </head>
 
-<body>
+<body data-theme="dark">
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="item6.html">Mini Games</a>
-    <a href="about.html">About</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </div>
+<header class="topbar">
+    <div class="logo">CraftDownloader</div>
 
-  <label class="toggle">
-    <input type="checkbox" onclick="toggleTheme()">
-    <span class="slider"></span>
-  </label>
-</div>
+    <div class="nav-wrapper">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="how-to-install.html">How to Install</a>
+            <a href="item1.html">Spleef</a>
+            <a href="item2.html">Manhunt</a>
+            <a href="item6.html">Prop Hunt</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>🎮 Prop Hunt Hub</h1>
-  <p>The best Minecraft Education mini games in one place</p>
-</section>
+        <div class="theme-toggle">
+            <span>🌙</span>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+            <span>☀️</span>
+        </div>
 
-<!-- MINI GAMES -->
-<section class="games">
-  <h2>🔥 Featured Mini Games</h2>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+</header>
 
-  <div class="game-grid">
-    <div class="game-card">🕵️ Prop Hunt</div>
-    <div class="game-card">🏃 Parkour Challenge</div>
-    <div class="game-card">🎯 PvP Arena</div>
-    <div class="game-card">🧩 Puzzle Escape</div>
-  </div>
-</section>
+<main>
 
-<!-- HOW TO INSTALL -->
-<section class="install">
-  <h2>📦 How To Install</h2>
+    <section class="hero">
+        <h1>CraftDownloader</h1>
+        <p class="subtitle">
+            Download high-quality Minecraft Bedrock minigames, ready to play.
+        </p>
+    </section>
 
-  <div class="install-box">
-    <p><strong>Step 1:</strong> Download Minecraft Education.</p>
-    <p><strong>Step 2:</strong> Download the mini game world file.</p>
-    <p><strong>Step 3:</strong> Open Minecraft Education.</p>
-    <p><strong>Step 4:</strong> Import the world file.</p>
-    <p><strong>Step 5:</strong> Launch and enjoy!</p>
-  </div>
-</section>
+    <!-- Ad Unit -->
+    <ins class="adsbygoogle"
+        style="display:block; text-align:center; margin-bottom:32px;"
+        data-ad-client="ca-pub-1662092058732241"
+        data-ad-slot="3881039877"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Prop Hunt Hub</p>
-  <a href="privacy.html">Privacy Policy</a>
-</footer>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!-- GRID -->
+    <section class="grid">
+        <!-- Keep your existing cards here (unchanged) -->
+    </section>
+
+    <!-- INSTALL -->
+    <section class="install">
+        <h2>How to Install Minecraft Bedrock Minigames</h2>
+        <ol>
+            <li>Download the <strong>.mcworld</strong> file.</li>
+            <li>Open it on your device.</li>
+            <li>Minecraft will import automatically.</li>
+            <li>Go to Play → Worlds.</li>
+            <li>Start the world.</li>
+        </ol>
+
+        <div class="install-note">
+            Designed for Minecraft Bedrock Edition.
+        </div>
+    </section>
+
+    <footer>
+        © CraftDownloader · <a href="privacy.html">Privacy Policy</a>
+    </footer>
+
+</main>
 
 <script>
-function toggleTheme() {
-  document.body.classList.toggle("dark");
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("active");
 }
+
+const toggle = document.getElementById("themeToggle");
+const body = document.body;
+
+function applyTheme(theme) {
+    body.setAttribute("data-theme", theme);
+    localStorage.setItem("cd-theme", theme);
+    toggle.checked = theme === "light";
+}
+
+toggle.addEventListener("change", () => {
+    applyTheme(toggle.checked ? "light" : "dark");
+});
+
+applyTheme(localStorage.getItem("cd-theme") || "dark");
 </script>
 
 </body>
