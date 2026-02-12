@@ -194,51 +194,53 @@
         }
 
 
-        /* =====================
+
+/* =====================
    CATEGORIES
 ===================== */
-.categories {
-    margin-top: 70px;
-}
-
-.categories h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 30px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-}
-
 .category-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
+    position: relative;
     border-radius: 18px;
-    padding: 40px 30px;
+    overflow: hidden;
     text-decoration: none;
-    color: var(--text);
+    color: #ffffff;
+    min-height: 220px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    background-size: cover;
+    background-position: center;
     transition: 0.25s ease;
 }
 
-.category-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
+.category-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.3));
+}
+
+.category-card h3,
+.category-card p {
+    position: relative;
+    z-index: 2;
 }
 
 .category-card h3 {
-    margin-top: 0;
+    margin: 0 0 10px;
     font-size: 24px;
-    margin-bottom: 14px;
 }
 
 .category-card p {
-    color: var(--muted);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
+    color: #dddddd;
 }
+
+.category-card:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
 
         
         /* =====================
@@ -391,28 +393,41 @@
 
     <div class="category-grid">
 
-        <a href="pvp.html" class="category-card">
-            <h3>PvP</h3>
-            <p>Fast-paced player vs player combat maps and arena battles.</p>
+        <a href="pvp.html" class="category-card"
+           style="background-image: url('https://images.unsplash.com/photo-1605902711622-cfb43c4437d1');">
+            <div>
+                <h3>PvP</h3>
+                <p>Fast-paced player vs player combat maps and arena battles.</p>
+            </div>
         </a>
 
-        <a href="team-games.html" class="category-card">
-            <h3>Team Games</h3>
-            <p>Work together in Capture the Flag, KOTH, and more.</p>
+        <a href="team-games.html" class="category-card"
+           style="background-image: url('https://images.unsplash.com/photo-1598550430945-c50d2e3e6f9b');">
+            <div>
+                <h3>Team Games</h3>
+                <p>Work together in Capture the Flag, KOTH, and more.</p>
+            </div>
         </a>
 
-        <a href="party-games.html" class="category-card">
-            <h3>Party Games</h3>
-            <p>Fun casual mini-games like Prop Hunt and Spleef.</p>
+        <a href="party-games.html" class="category-card"
+           style="background-image: url('https://images.unsplash.com/photo-1608889175123-8f4d6a5c8e6e');">
+            <div>
+                <h3>Party Games</h3>
+                <p>Fun casual mini-games like Prop Hunt and Spleef.</p>
+            </div>
         </a>
 
-        <a href="challenge-maps.html" class="category-card">
-            <h3>Challenge Maps</h3>
-            <p>Survive, complete objectives, and test your skills.</p>
+        <a href="challenge-maps.html" class="category-card"
+           style="background-image: url('https://images.unsplash.com/photo-1605902711834-8b11c3a2a3df');">
+            <div>
+                <h3>Challenge Maps</h3>
+                <p>Survive, complete objectives, and test your skills.</p>
+            </div>
         </a>
 
     </div>
 </section>
+
 
     
     <!-- INSTALL -->
