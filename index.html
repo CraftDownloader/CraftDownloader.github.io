@@ -8,8 +8,8 @@
 <style>
 :root {
   --bg: #ffffff;
-  --text: #111111;
-  --card: #f3f3f3;
+  --text: #111;
+  --card: #f2f2f2;
   --accent: #4CAF50;
 }
 
@@ -35,7 +35,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -46,6 +45,7 @@ body {
   color: var(--text);
   margin-right: 20px;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .nav-links a:hover {
@@ -98,11 +98,11 @@ input:checked + .slider:before {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 90px 20px 60px;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 10px;
 }
 
@@ -111,70 +111,91 @@ input:checked + .slider:before {
   opacity: 0.8;
 }
 
-/* CATEGORIES */
+/* CATEGORY SECTION */
 .categories {
-  padding: 50px 20px;
-  text-align: center;
+  padding: 60px 40px;
 }
 
 .categories h2 {
-  margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2rem;
 }
 
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
 }
 
+/* IMAGE CARD */
 .category-card {
-  background: var(--card);
-  padding: 60px 20px;
-  border-radius: 15px;
-  font-size: 1.5rem;
-  font-weight: bold;
+  position: relative;
+  height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.category-card:hover {
-  transform: translateY(-8px);
-  background: var(--accent);
-  color: #000;
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 /* HOW TO INSTALL */
 .install {
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
 .install h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 2rem;
 }
 
 .install-box {
   background: var(--card);
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 700px;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 750px;
   margin: auto;
   text-align: left;
-  line-height: 1.6;
+  line-height: 1.8;
+  font-size: 1.1rem;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+  padding: 25px;
+  margin-top: 50px;
   background: var(--card);
 }
 
 footer a {
   text-decoration: none;
   color: var(--text);
+  font-weight: bold;
 }
 
 footer a:hover {
@@ -202,18 +223,35 @@ footer a:hover {
 <!-- HERO -->
 <section class="hero">
   <h1>🎮 Prop Hunt Hub</h1>
-  <p>The best mini games you can play in Minecraft Education</p>
+  <p>The best Minecraft Education mini games in one place</p>
 </section>
 
 <!-- CATEGORIES -->
 <section class="categories">
-  <h2>🔥 Mini Game Categories</h2>
+  <h2>🔥 Explore Mini Game Categories</h2>
 
   <div class="category-grid">
-    <div class="category-card">🏃 Action Games</div>
-    <div class="category-card">🧩 Puzzle Games</div>
-    <div class="category-card">🎯 PvP Challenges</div>
-    <div class="category-card">🕵️ Prop Hunt Maps</div>
+
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1" alt="Action">
+      <div class="overlay">🏃 Action Games</div>
+    </div>
+
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1598550430945-c50d2e3e6f9b" alt="Puzzle">
+      <div class="overlay">🧩 Puzzle Games</div>
+    </div>
+
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1608889175123-8f4d6a5c8e6e" alt="PvP">
+      <div class="overlay">🎯 PvP Challenges</div>
+    </div>
+
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1605902711834-8b11c3a2a3df" alt="Prop Hunt">
+      <div class="overlay">🕵️ Prop Hunt Maps</div>
+    </div>
+
   </div>
 </section>
 
@@ -222,8 +260,8 @@ footer a:hover {
   <h2>📦 How To Install</h2>
 
   <div class="install-box">
-    <p><strong>Step 1:</strong> Download Minecraft Bedrock/Education</p>
-    <p><strong>Step 2:</strong> Download your chosen mini game world file.</p>
+    <p><strong>Step 1:</strong> Download Minecraft Education.</p>
+    <p><strong>Step 2:</strong> Download the mini game world file.</p>
     <p><strong>Step 3:</strong> Open Minecraft Education.</p>
     <p><strong>Step 4:</strong> Import the world file.</p>
     <p><strong>Step 5:</strong> Launch and enjoy!</p>
