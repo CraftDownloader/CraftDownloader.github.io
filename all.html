@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google AdSense -->
@@ -11,9 +11,6 @@
     <title>CraftDownloader</title>
 
     <style>
-        /* =====================
-           THEME VARIABLES
-        ====================== */
         :root {
             --bg: #121212;
             --panel: #1d1d1d;
@@ -32,9 +29,6 @@
             --accent: #0078ff;
         }
 
-        /* =====================
-           BASE
-        ====================== */
         body {
             margin: 0;
             padding: 40px 16px;
@@ -63,9 +57,27 @@
             color: var(--muted);
         }
 
-        /* =====================
-           GRID
-        ====================== */
+        /* BACK BUTTON */
+        .back-home {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 18px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .back-home:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* GRID */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -118,9 +130,7 @@
             font-size: 16px;
         }
 
-        /* =====================
-           HOW TO INSTALL
-        ====================== */
+        /* INSTALL */
         .install {
             margin-top: 60px;
             background: var(--panel);
@@ -153,9 +163,7 @@
             border-radius: 6px;
         }
 
-        /* =====================
-           THEME TOGGLE
-        ====================== */
+        /* THEME TOGGLE */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -218,7 +226,6 @@
 
 <body data-theme="dark">
 
-<!-- THEME TOGGLE -->
 <div class="theme-toggle">
     <span>Dark</span>
     <label class="switch">
@@ -229,92 +236,88 @@
 </div>
 
 <main>
-    <header>
-        <h1>CraftDownloader</h1>
-        <p class="subtitle">
-            Download high-quality Minecraft Bedrock minigames, ready to play.
-        </p>
-    </header>
 
-    <!-- Ad Unit -->
-    <ins class="adsbygoogle"
-        style="display:block; text-align:center; margin-bottom:32px;"
-        data-ad-client="ca-pub-1662092058732241"
-        data-ad-slot="3881039877"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+<a href="index.html" class="back-home">← Back to Home</a>
 
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+<header>
+    <h1>CraftDownloader</h1>
+    <p class="subtitle">
+        Download high-quality Minecraft Bedrock minigames, ready to play.
+    </p>
+</header>
 
-    <!-- GAME GRID -->
-    <section class="grid">
-        <div class="card">
-            <img src="ctf_pic.jpg" alt="Capture the Flag">
-            <h2>Capture the Flag</h2>
-            <p>Steal the enemy flag and return it to your base while defending your own.</p>
-            <a class="view-btn" href="item1.html">View</a>
-        </div>
+<ins class="adsbygoogle"
+    style="display:block; text-align:center; margin-bottom:32px;"
+    data-ad-client="ca-pub-1662092058732241"
+    data-ad-slot="3881039877"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
 
-        <div class="card">
-            <img src="KitPvP.png" alt="Kit PvP">
-            <h2>Kit PvP</h2>
-            <p>Fast-paced PvP combat using predefined kits with different abilities.</p>
-            <a class="view-btn" href="item2.html">View</a>
-        </div>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-        <div class="card">
-            <img src="Spleef.png" alt="Spleef">
-            <h2>Spleef</h2>
-            <p>Destroy blocks beneath your opponents and be the last player standing.</p>
-            <a class="view-btn" href="item3.html">View</a>
-        </div>
+<section class="grid">
+    <div class="card">
+        <img src="ctf_pic.jpg" alt="Capture the Flag">
+        <h2>Capture the Flag</h2>
+        <p>Steal the enemy flag and return it to your base while defending your own.</p>
+        <a class="view-btn" href="item1.html">View</a>
+    </div>
 
-        <div class="card">
-            <img src="Manhunt.png" alt="Manhunt">
-            <h2>Manhunt</h2>
-            <p>Complete objectives while being relentlessly hunted by other players.</p>
-            <a class="view-btn" href="item4.html">View</a>
-        </div>
+    <div class="card">
+        <img src="KitPvP.png" alt="Kit PvP">
+        <h2>Kit PvP</h2>
+        <p>Fast-paced PvP combat using predefined kits with different abilities.</p>
+        <a class="view-btn" href="item2.html">View</a>
+    </div>
 
-        <div class="card">
-            <img src="kinghill.png" alt="King of the Hill">
-            <h2>King of the Hill</h2>
-            <p>Control the hill for as long as possible to earn points and win.</p>
-            <a class="view-btn" href="item5.html">View</a>
-        </div>
+    <div class="card">
+        <img src="Spleef.png" alt="Spleef">
+        <h2>Spleef</h2>
+        <p>Destroy blocks beneath your opponents and be the last player standing.</p>
+        <a class="view-btn" href="item3.html">View</a>
+    </div>
 
-        <div class="card">
-            <img src="prophunt.png" alt="Prop Hunt">
-            <h2>Prop Hunt</h2>
-            <p>Hide as props while hunters search the map to uncover disguised players.</p>
-            <a class="view-btn" href="item6.html">View</a>
-        </div>
-    </section>
+    <div class="card">
+        <img src="Manhunt.png" alt="Manhunt">
+        <h2>Manhunt</h2>
+        <p>Complete objectives while being relentlessly hunted by other players.</p>
+        <a class="view-btn" href="item4.html">View</a>
+    </div>
 
-    <!-- HOW TO INSTALL -->
-    <section class="install">
-        <h2>How to Install Minecraft Bedrock Minigames</h2>
-        <p class="subtitle">
-            Follow these steps to install and play any minigame downloaded from CraftDownloader.
-        </p>
+    <div class="card">
+        <img src="kinghill.png" alt="King of the Hill">
+        <h2>King of the Hill</h2>
+        <p>Control the hill for as long as possible to earn points and win.</p>
+        <a class="view-btn" href="item5.html">View</a>
+    </div>
 
-        <ol>
-            <li>Download the <strong>.mcworld</strong> file from the minigame page.</li>
-            <li>Open the downloaded file on your device.</li>
-            <li>Minecraft Bedrock Edition will launch automatically and import the world.</li>
-            <li>Go to <strong>Play → Worlds</strong> and locate the imported map.</li>
-            <li>Start the world and follow any in-game instructions.</li>
-        </ol>
+    <div class="card">
+        <img src="prophunt.png" alt="Prop Hunt">
+        <h2>Prop Hunt</h2>
+        <p>Hide as props while hunters search the map to uncover disguised players.</p>
+        <a class="view-btn" href="item6.html">View</a>
+    </div>
+</section>
 
-        <div class="install-note">
-            <strong>Note:</strong> These maps are designed for Minecraft Bedrock Edition.
-            Make sure your Minecraft version is up to date.
-        </div>
-    </section>
+<section class="install">
+    <h2>How to Install Minecraft Bedrock Minigames</h2>
+    <ol>
+        <li>Download the <strong>.mcworld</strong> file.</li>
+        <li>Open it on your device.</li>
+        <li>Minecraft will import automatically.</li>
+        <li>Go to Play → Worlds.</li>
+        <li>Start the world.</li>
+    </ol>
 
-    <footer>© CraftDownloader</footer>
+    <div class="install-note">
+        Designed for Minecraft Bedrock Edition.
+    </div>
+</section>
+
+<footer>© CraftDownloader</footer>
+
 </main>
 
 <script>
