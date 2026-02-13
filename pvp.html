@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241"
+        crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftDownloader - All Games </title>
+
+    <style>
+        :root {
+            --bg: #121212;
+            --panel: #1d1d1d;
+            --text: #ffffff;
+            --muted: #bbbbbb;
+            --border: #333;
+            --accent: #0078ff;
+        }
+
+        [data-theme="light"] {
+            --bg: #f4f6f8;
+            --panel: #ffffff;
+            --text: #111111;
+            --muted: #555555;
+            --border: #dddddd;
+            --accent: #0078ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--muted);
+        }
+
+        /* BACK BUTTON */
+        .back-home {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 18px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .back-home:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 14px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: var(--muted);
+            flex-grow: 1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .view-btn {
+            margin-top: 16px;
+            padding: 12px;
+            text-align: center;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        /* INSTALL */
+        .install {
+            margin-top: 60px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .install h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .install ol {
+            margin-left: 20px;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .install li {
+            margin-bottom: 14px;
+        }
+
+        .install-note {
+            margin-top: 20px;
+            padding: 16px;
+            border-left: 4px solid var(--accent);
+            background: rgba(0, 120, 255, 0.08);
+            color: var(--muted);
+            border-radius: 6px;
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #888;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .switch input:checked + .slider {
+            background: var(--accent);
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(22px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+<div class="theme-toggle">
+    <span>Dark</span>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+    </label>
+    <span>Light</span>
+</div>
+
+<main>
+
+<a href="index.html" class="back-home">← Back to Home</a>
+
+<header>
+    <h1>CraftDownloader</h1>
+    <p class="subtitle">
+        Download high-quality Minecraft Bedrock minigames, ready to play.
+    </p>
+</header>
+
+<ins class="adsbygoogle"
+    style="display:block; text-align:center; margin-bottom:32px;"
+    data-ad-client="ca-pub-1662092058732241"
+    data-ad-slot="3881039877"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<section class="grid">
+    <div class="card">
+        <img src="ctf_pic.jpg" alt="Capture the Flag">
+        <h2>Capture the Flag</h2>
+        <p>Steal the enemy flag and return it to your base while defending your own.</p>
+        <a class="view-btn" href="item1.html">View</a>
+    </div>
+
+    <div class="card">
+        <img src="KitPvP.png" alt="Kit PvP">
+        <h2>Kit PvP</h2>
+        <p>Fast-paced PvP combat using predefined kits with different abilities.</p>
+        <a class="view-btn" href="item2.html">View</a>
+    </div>
+
+
+    <div class="card">
+        <img src="Manhunt.png" alt="Manhunt">
+        <h2>Manhunt</h2>
+        <p>Complete objectives while being relentlessly hunted by other players.</p>
+        <a class="view-btn" href="item4.html">View</a>
+    </div>
+
+    <div class="card">
+        <img src="kinghill.png" alt="King of the Hill">
+        <h2>King of the Hill</h2>
+        <p>Control the hill for as long as possible to earn points and win.</p>
+        <a class="view-btn" href="item5.html">View</a>
+    </div>
+
+
+
+<section class="install">
+    <h2>How to Install Minecraft Bedrock Minigames</h2>
+    <ol>
+        <li>Download the <strong>.mcworld</strong> file.</li>
+        <li>Open it on your device.</li>
+        <li>Minecraft will import automatically.</li>
+        <li>Go to Play → Worlds.</li>
+        <li>Start the world.</li>
+    </ol>
+
+    <div class="install-note">
+        Designed for Minecraft Bedrock Edition.
+    </div>
+</section>
+
+<footer>© CraftDownloader</footer>
+
+</main>
+
+<script>
+    const toggle = document.getElementById("themeToggle");
+    const body = document.body;
+
+    function applyTheme(theme) {
+        body.setAttribute("data-theme", theme);
+        localStorage.setItem("cd-theme", theme);
+        toggle.checked = theme === "light";
+    }
+
+    toggle.addEventListener("change", () => {
+        applyTheme(toggle.checked ? "light" : "dark");
+    });
+
+    applyTheme(localStorage.getItem("cd-theme") || "dark");
+</script>
+
+</body>
+</html>
