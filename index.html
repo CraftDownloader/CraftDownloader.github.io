@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1662092058732241" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftDownloader — Minecraft Bedrock Minigames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0d11;
+            --surface: #12151c;
+            --surface2: #1a1e28;
+            --border: #252a38;
+            --text: #e8eaf0;
+            --muted: #7a8099;
+            --accent: #00d4ff;
+            --accent2: #7c4dff;
+            --glow: rgba(0, 212, 255, 0.15);
+        }
+
+        [data-theme="light"] {
+            --bg: #f0f2f7;
+            --surface: #ffffff;
+            --surface2: #e8ecf5;
+            --border: #d4d9e8;
+            --text: #0d1117;
+            --muted: #6272a4;
+            --accent: #0066cc;
+            --accent2: #6a1fc2;
+            --glow: rgba(0, 102, 204, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Background grid texture ── */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 13, 17, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+        }
+
+        [data-theme="light"] .topbar {
+            background: rgba(240, 242, 247, 0.92);
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--glow);
+        }
+
+        .logo span { color: var(--text); }
+
+        .nav-wrapper { display: flex; align-items: center; gap: 16px; }
+
+        .nav-links { display: flex; gap: 6px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        .theme-toggle { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+
+        .switch { position: relative; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: var(--border);
+            border-radius: 22px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 3px; bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.25s;
+        }
+
+        .switch input:checked + .slider { background: var(--accent); }
+        .switch input:checked + .slider::before { transform: translateX(22px); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 62px; right: 16px;
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                flex-direction: column;
+                padding: 12px;
+                display: none;
+                width: 200px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+
+        /* ── MAIN ── */
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px 80px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            margin-bottom: 64px;
+            padding: 20px 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(48px, 8vw, 90px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--text) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: inline-flex;
+            gap: 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 28px;
+        }
+
+        .stat { text-align: center; }
+        .stat-num {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-label { font-size: 12px; color: var(--muted); }
+
+        /* ── AD UNIT ── */
+        .ad-wrap {
+            margin-bottom: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        /* ── SECTION HEADER ── */
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-header h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-count {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ── GAME GRID ── */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 64px;
+        }
+
+        .game-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.12);
+        }
+
+        .game-card-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+            background: var(--surface2);
+        }
+
+        .game-card-img-placeholder {
+            width: 100%;
+            height: 170px;
+            background: linear-gradient(135deg, var(--surface2) 0%, var(--border) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .game-card-body {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--glow);
+            border: 1px solid rgba(0,212,255,0.2);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .game-card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .game-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .game-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .game-players {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .download-btn {
+            background: var(--accent);
+            color: #000;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 7px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: opacity 0.2s;
+        }
+
+        .download-btn:hover { opacity: 0.85; }
+
+        /* ── CATEGORY GRID ── */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            min-height: 160px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--surface2);
+            border: 1px solid var(--border);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .category-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+        }
+
+        .category-card > div { position: relative; z-index: 1; }
+
+        .category-card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .category-card p {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        /* ── INSTALL ── */
+        .install {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .install::before {
+            content: "";
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .install h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .install-step {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .step-num {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
+            opacity: 0.6;
+        }
+
+        .step-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .install-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-left: 3px solid var(--accent);
+            background: var(--glow);
+            border-radius: 0 10px 10px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero { animation: fadeUp 0.6s ease both; }
+        .game-card { animation: fadeUp 0.5s ease both; }
+        .game-card:nth-child(1) { animation-delay: 0.05s; }
+        .game-card:nth-child(2) { animation-delay: 0.1s; }
+        .game-card:nth-child(3) { animation-delay: 0.15s; }
+        .game-card:nth-child(4) { animation-delay: 0.2s; }
+        .game-card:nth-child(5) { animation-delay: 0.25s; }
+        .game-card:nth-child(6) { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body data-theme="dark">
+
+<header class="topbar">
+    <div class="logo">Craft<span>Downloader</span></div>
+
+    <div class="nav-wrapper">
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="how-to-install.html">How to Install</a>
+            <a href="all.html">All Games</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+
+        <div class="theme-toggle">
+            <span>🌙</span>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+            <span>☀️</span>
+        </div>
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">Minecraft Bedrock Edition</div>
+        <h1>CraftDownloader</h1>
+        <p>Download high-quality minigames, ready to play with friends.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num" id="gameCount">6</div>
+                <div class="stat-label">Minigames</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">Free</div>
+                <div class="stat-label">Always</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">Bedrock</div>
+                <div class="stat-label">Compatible</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Unit -->
+    <div class="ad-wrap">
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-client="ca-pub-1662092058732241"
+            data-ad-slot="3881039877"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- FEATURED GAMES GRID -->
+    <div class="section-header">
+        <h2>Featured Games</h2>
+        <div class="section-line"></div>
+        <span class="section-count" id="gridCount"></span>
+    </div>
+
+    <div class="game-grid" id="gameGrid">
+        <!-- Cards are injected by JS — edit GAMES array below to add/remove games -->
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="section-header">
+        <h2>Browse by Category</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="category-grid">
+        <a href="pvp.html" class="category-card" style="background-image:url('pvp.png')">
+            <div><h3>PvP</h3><p>Fast-paced player vs player combat maps.</p></div>
+        </a>
+        <a href="team-games.html" class="category-card" style="background-image:url('teamgame.png')">
+            <div><h3>Team Games</h3><p>Work together in Capture the Flag, KOTH, and more.</p></div>
+        </a>
+        <a href="party-games.html" class="category-card" style="background-image:url('partyimage.png')">
+            <div><h3>Party Games</h3><p>Fun casual games like Prop Hunt and Spleef.</p></div>
+        </a>
+        <a href="challenge-maps.html" class="category-card" style="background-image:url('https://images.unsplash.com/photo-1605902711834-8b11c3a2a3df')">
+            <div><h3>Challenge Maps</h3><p>Survive, complete objectives, test your skills.</p></div>
+        </a>
+        <a href="all.html" class="category-card" style="background-image:url('')">
+            <div><h3>All Games</h3><p>Browse every minigame in one place.</p></div>
+        </a>
+    </div>
+
+    <!-- INSTALL -->
+    <section class="install">
+        <h2>⚡ How to Install</h2>
+        <div class="install-steps">
+            <div class="install-step">
+                <div class="step-num">01</div>
+                <div class="step-text">Download the <strong>.mcworld</strong> file from any game page.</div>
+            </div>
+            <div class="install-step">
+                <div class="step-num">02</div>
+                <div class="step-text">Open the file on your device to trigger the import.</div>
+            </div>
+            <div class="install-step">
+                <div class="step-num">03</div>
+                <div class="step-text">Minecraft imports automatically — no mods needed.</div>
+            </div>
+            <div class="install-step">
+                <div class="step-num">04</div>
+                <div class="step-text">Go to <strong>Play → Worlds</strong> and launch it!</div>
+            </div>
+        </div>
+        <div class="install-note">
+            🎮 &nbsp; Designed exclusively for <strong>Minecraft Bedrock Edition</strong> on all platforms.
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © CraftDownloader &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="how-to-install.html">How to Install</a>
+</footer>
+
+<script>
+/* ============================================================
+   GAMES ARRAY — ADD OR REMOVE GAMES HERE
+   
+   Each game needs:
+     id:          "item1" through "itemN" (links to itemN.html)
+     title:       Display name
+     description: Short description shown on the card
+     tag:         Category label (PvP, Party, Team, etc.)
+     players:     Player count string
+     emoji:       Fallback emoji if no image
+     image:       (optional) path to thumbnail image
+
+   To add a new game, just copy one object and paste it at the end.
+============================================================ */
+const GAMES = [
+    {
+        id: "item1",
+        title: "Spleef",
+        description: "Destroy blocks under opponents to make them fall. Last player standing wins!",
+        tag: "Party",
+        players: "2–8 players",
+        emoji: "🏔️",
+        image: ""
+    },
+    {
+        id: "item2",
+        title: "Manhunt",
+        description: "One speedrunner, multiple hunters. Can you beat the Ender Dragon before getting caught?",
+        tag: "PvP",
+        players: "2–6 players",
+        emoji: "🏃",
+        image: ""
+    },
+    {
+        id: "item3",
+        title: "Game 3",
+        description: "Exciting minigame coming soon. Stay tuned for updates!",
+        tag: "Party",
+        players: "2–4 players",
+        emoji: "⚔️",
+        image: ""
+    },
+    {
+        id: "item4",
+        title: "Game 4",
+        description: "Exciting minigame coming soon. Stay tuned for updates!",
+        tag: "Team",
+        players: "4–8 players",
+        emoji: "🏹",
+        image: ""
+    },
+    {
+        id: "item5",
+        title: "Game 5",
+        description: "Exciting minigame coming soon. Stay tuned for updates!",
+        tag: "PvP",
+        players: "2–4 players",
+        emoji: "💣",
+        image: ""
+    },
+    {
+        id: "item6",
+        title: "Prop Hunt",
+        description: "Hide as a block, survive as long as possible. Hunters must find all props!",
+        tag: "Party",
+        players: "4–10 players",
+        emoji: "🪑",
+        image: ""
+    }
+    // ↑ Add more games here following the same pattern ↑
+];
+
+/* ── Render game cards ── */
+function renderGames() {
+    const grid = document.getElementById("gameGrid");
+    const count = document.getElementById("gridCount");
+    const heroCount = document.getElementById("gameCount");
+
+    heroCount.textContent = GAMES.length;
+    count.textContent = GAMES.length + " games";
+
+    grid.innerHTML = GAMES.map(g => `
+        <a href="${g.id}.html" class="game-card">
+            <img class="game-card-img" src="${g.image || 'blank.png'}" alt="${g.title}" loading="lazy">
+            <div class="game-card-body">
+                <span class="game-tag">${g.tag}</span>
+                <h3>${g.title}</h3>
+                <p>${g.description}</p>
+                <div class="game-card-footer">
+                    <span class="game-players">👥 ${g.players}</span>
+                    <span class="download-btn">Download</span>
+                </div>
+            </div>
+        </a>
+    `).join("");
+}
+
+renderGames();
+
+/* ── Nav toggle ── */
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+/* ── Theme ── */
+const toggle = document.getElementById("themeToggle");
+
+function applyTheme(theme) {
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("cd-theme", theme);
+    toggle.checked = (theme === "light");
+}
+
+toggle.addEventListener("change", () => applyTheme(toggle.checked ? "light" : "dark"));
+applyTheme(localStorage.getItem("cd-theme") || "dark");
+</script>
+
+</body>
+</html>
