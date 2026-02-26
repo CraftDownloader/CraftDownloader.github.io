@@ -652,76 +652,63 @@
 </footer>
 
 <script>
-/* ============================================================
-   GAMES ARRAY — ADD OR REMOVE GAMES HERE
-   
-   Each game needs:
-     id:          "item1" through "itemN" (links to itemN.html)
-     title:       Display name
-     description: Short description shown on the card
-     tag:         Category label (PvP, Party, Team, etc.)
-     players:     Player count string
-     emoji:       Fallback emoji if no image
-     image:       (optional) path to thumbnail image
 
-   To add a new game, just copy one object and paste it at the end.
-============================================================ */
 const GAMES = [
     {
         id: "item1",
-        title: "Spleef",
-        description: "Destroy blocks under opponents to make them fall. Last player standing wins!",
-        tag: "Party",
-        players: "2–8 players",
-        emoji: "🏔️",
+        title: "Capture the Flag",
+        description: "Capture the opponents flag more then they do!",
+        tag: "Team",
+        players: "2+",
+        emoji: "🏳️",
         image: ""
     },
     {
         id: "item2",
-        title: "Manhunt",
-        description: "One speedrunner, multiple hunters. Can you beat the Ender Dragon before getting caught?",
+        title: "Kit Pvp",
+        description: "Battle it out in pre-made kits",
         tag: "PvP",
-        players: "2–6 players",
-        emoji: "🏃",
-        image: ""
-    },
-    {
-        id: "item3",
-        title: "Game 3",
-        description: "Exciting minigame coming soon. Stay tuned for updates!",
-        tag: "Party",
-        players: "2–4 players",
+        players: "2–10 players",
         emoji: "⚔️",
         image: ""
     },
     {
+        id: "item3",
+        title: "Spleef",
+        description: "Break the block under you opponents to make them fall in!",
+        tag: "Party",
+        players: "2+ players",
+        emoji: "🥄",
+        image: ""
+    },
+    {
         id: "item4",
-        title: "Game 4",
-        description: "Exciting minigame coming soon. Stay tuned for updates!",
+        title: "Manhunt",
+        description: "The runner has to complete a task before getting hunted down",
         tag: "Team",
-        players: "4–8 players",
-        emoji: "🏹",
+        players: "2-10 players",
+        emoji: "⚔️",
         image: ""
     },
     {
         id: "item5",
-        title: "Game 5",
-        description: "Exciting minigame coming soon. Stay tuned for updates!",
-        tag: "PvP",
-        players: "2–4 players",
-        emoji: "💣",
+        title: "King of the Hill",
+        description: "Stay on the hill and defend it with your team for as long as possible.",
+        tag: "Team",
+        players: "2–10",
+        emoji: "⛰️",
         image: ""
     },
     {
         id: "item6",
         title: "Prop Hunt",
-        description: "Hide as a block, survive as long as possible. Hunters must find all props!",
+        description: "Hide as a block and avoid getting found by the hunters.",
         tag: "Party",
         players: "4–10 players",
         emoji: "🪑",
         image: ""
     }
-    // ↑ Add more games here following the same pattern ↑
+   //add games in future here
 ];
 
 /* ── Render game cards ── */
